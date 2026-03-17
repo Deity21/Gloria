@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Someone Special ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #ff6ec4, #7873f5, #0f0f1a);
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    z-index: 2;
+}
+
+input {
+    padding: 15px;
+    border-radius: 30px;
+    border: none;
+    width: 260px;
+    text-align: center;
+    outline: none;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    background: white;
+    color: #ff6ec4;
+    cursor: pointer;
+}
+
+#error {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* floating hearts */
+.heart {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: float 6s infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>⚠️ Before you continue…</h2>
+    <p>Turn up your volume 🎵❤️</p>
+    <h3>This space is reserved for someone special</h3>
+
+    <input type="password" id="nameInput" placeholder="Enter your name">
+    <br>
+    <button onclick="checkName()">Enter</button>
+
+    <p id="error"></p>
+</div>
+
+<script>
+const validNames = [
+    "gloria",
+    "oluwabukunmi",
+    "adeniji",
+    "gloria oluwabukunmi adeniji"
+];
+
+function checkName() {
+    let input = document.getElementById("nameInput").value.toLowerCase().trim();
+
+    if (validNames.includes(input)) {
+        window.location.href = "main.html";
+    } else {
+        document.getElementById("error").innerText =
+        "Hmm… that doesn’t sound like someone special ❤️";
+    }
+}
+
+/* generate floating hearts */
+for (let i = 0; i < 25; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
